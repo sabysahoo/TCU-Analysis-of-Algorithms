@@ -1,0 +1,364 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Analysis of Algorithms
+%
+% Homework Assignment #2
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Score Card and Answer Sheets
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints,11pt]{exam}
+\usepackage{clrscode4e}
+\usepackage{tcucosc}
+\usepackage{units}
+\usepackage{enumitem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin Document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\pagestyle{empty}
+
+
+\noindent{\large\bfseries Name: YOUR NAME GOES HERE{\hrulefill}}\\
+\noindent{\large\bfseries COSC 40403 - Analysis of Algorithms: Fall 2018: Homework 2}\\
+\noindent{\large\bfseries Due: 23:59:59 on September 11, 2018}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Score Card and Answer Sheets
+%
+% Comment out one-or-the-other to show or not-show the answers.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\printanswers
+%%\noprintanswers
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Score Card
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifprintanswers
+\noindent
+\begin{center}
+	\gradetable[v][questions]
+\end{center}
+\newpage
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Question 1
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{questions}
+\question[5]
+Show that $f(n) = n^2 + 3n^3 \in \Theta(n^3)$.  That is, use the definitions of $O$ and $\Omega$ to show that $f(n)$ is both $O(n^3)$ and $\Omega(n^3)$. 
+\begin{solutionorbox}
+
+Big-O : O(g(n)) = \{ $f$(n) : there exist positive constants $c_1$ and $n_0$ such that \\
+	0 $\leq$ $f$(n) $\leq$ $c_1$.g(n) for all n $\geq$ $n_0$ \}.\\
+	
+	$\hspace{5mm}$ 3$n^3$ + $n^2$ $\leq$ $c_1$.$n^3$ $\hspace{5mm}$ -----1-----  \\
+	
+
+Big-$\Omega$ : $\Omega$(g(n)) = \{ $f$(n) : there exist positive constants $c_2$ and $n_0$ such that \\
+0 $\leq$ $c_2$.g(n) $\leq$ $f$(n) for all n $\geq$ $n_0$ \}.\\
+
+	$\hspace{5mm}$ $c_2$.$n^3$ $\leq$ 3$n^3$ + $n^2$   $\hspace{5mm}$ -----2----- \\
+	
+Big-$\Theta$ : $\Theta$(g(n)) = \{ $f$(n) : there exist positive constants $c_1$,$c_2$ and $n_0$ such that \\
+0 $\leq$ $c_2$.g(n)  $\leq$ $f$(n) $\leq$ $c_1$.g(n) for all n $\geq$ $n_0$ \}.\\
+
+	$\hspace{5mm}$ From 1 $\&$ 2, we get: \\
+	
+  	$\hspace{5mm}$  $c_2$.$n^3$ $\leq$ 3$n^3$ + $n^2$ $\leq$ $c_1$.$n^3$ $\hspace{5mm}$ -----3-----\\
+  	
+	$\hspace{5mm}$  $c_2$ $\leq$ 3 + 1/n $\leq$ $c_1$ \\
+	
+	$\hspace{5mm}$  So, for n $\geq$ 1, $c_1$ $\geq$ 4 $\&$ $c_2$ $\leq$ 3 \\
+	
+	$\hspace{5mm}$ equation 3 always holds true and satisfies the conditions for Big-$\Theta$. \\ \\
+	$\hspace{5mm}$ Hence, $f(n) = n^2 + 3n^3 \in \Theta(n^3)$. \\
+		
+\end{solutionorbox}
+
+\ifprintanswers
+\newpage
+\else
+\bigskip
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Question 2
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question[5]
+Suppose you have a computer that requires 1 minute to solve problem instances of size $n=1000$.  Suppose you buy a new computer that runs 1000 times faster than the old one.  What instance sizes can be run in 1 minute, assuming the following time complexities $T(n)$ for our algorithm?
+\begin{enumerate}[label=(\alph*)]
+	\item $T(n) = n$
+	\item $T(n) = n^3$
+	\item $T(n) = 10^n$
+\end{enumerate}
+\begin{solutionorbox}
+	The old computer could do 1000 instances per min. Now, the new one can do 1000*1000 instances per min
+	\begin{enumerate}[label=(\alph*)]
+		\item $T(n) = n$ --- 1,000,000 = n
+		\item $T(n) = n^3$   $1000^3$*1000 = $10,000^3$ , hence n = 10,000
+		\item $T(n) = 10^n$	 $10^{1000}$*1000 = $10^{1003}$ , hence n = 1003
+	\end{enumerate}
+\end{solutionorbox}
+
+\ifprintanswers
+\newpage
+\else
+\bigskip
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Question 3
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question[5]
+Let $f(n)$ and $g(n)$ be asymptotically nonnegative functions.  Using the basic definition of $\Theta$-notation, prove that $\max(f(n),g(n)) = \Theta(f(n)+g(n))$.
+\begin{solutionorbox}
+
+ $Theorem$ $3.1$:\\
+For any two functions $f(n)$ and $g(n)$, we have  $f(n) = \Theta(g(n))$, if and only if, $f(n) = O(g(n))$ and $f(n) = \Omega(g(n))$. \\
+
+$\hspace{5mm}$ $f(n)$ $\leq$ $f(n)$ + $g(n)$ and $g(n)$ $\leq$ $f(n)$ + $g(n)$ \\
+
+$\hspace{5mm}$ So, $\max(f(n),g(n)) = \O(f(n)+g(n))$ $\hspace{5mm}$ (Upper-Bound). --1-- \\
+
+$\hspace{5mm}$ $f(n)$ + $g(n)$  $\leq$ $\max(f(n),g(n))$ \\
+
+$\hspace{5mm}$ $\rightarrow$ 1/2($f(n)$ + $g(n)$)  $\leq$ $\max(f(n),g(n))$ \\
+
+$\hspace{5mm}$ So, $\max(f(n),g(n)) = \Omega(f(n)+g(n))$ $\hspace{5mm}$ (Lower-Bound). --2-- \\
+
+Hence, from $Theorem 3.1$, 1 $\&$ 2 we have proved that $\max(f(n),g(n)) = \Theta(f(n)+g(n))$.
+
+
+\end{solutionorbox}
+
+\ifprintanswers
+\newpage
+\else
+\bigskip
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Question 4
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question[5]
+Show that the golden ratio $\phi$ and its conjugate $\hat\phi$ both satisfy the equation $x^2 = x+1$.
+\begin{solutionorbox}
+	$\Phi$ = $\dfrac{1+\sqrt{5}}{2}$ $\hspace{5mm}$ $\&$ $\hspace{5mm}$	$\hat{\Phi}$ = $\dfrac{1-\sqrt{5}}{2}$ \\
+	
+	$\hspace{5mm}$ Now, $x^2 = x+1$ \\
+	
+	$\hspace{5mm}$ $\rightarrow$  $(\dfrac{1+\sqrt{5}}{2})^2$ - $\dfrac{1+\sqrt{5}}{2}$ - 1 = 0 \\
+	
+	$\hspace{5mm}$ $\rightarrow$  $\dfrac{1 - 2*\sqrt{5} + 5 - 2 + 2*\sqrt{5} - 4}{4}$ = 0 \\
+	
+	$\hspace{5mm}$ Hence proved.
+	
+	
+\end{solutionorbox}
+
+\ifprintanswers
+\newpage
+\else
+\bigskip
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Question 5
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question[5]
+Prove by induction that the $i$th Fibonacci number satisfies the equailty
+$$F_i = \frac{\phi^i - \hat{\phi^i}}{\sqrt{5}}$$
+where $\phi$ is the golden ratio and $\hat{\phi^i}$ is its conjugate.
+\begin{solutionorbox}
+	$Proof: $ \\
+	
+	$\hspace{5mm}$ For n = 0, 
+	
+	$\hspace{5mm}$ $\hspace{5mm}$ $\hspace{5mm}$ 0 = $\dfrac{1 - 1}{\sqrt{5}}$ \\ 
+	
+	$\hspace{5mm}$ For n = 1, 	
+	
+	$\hspace{5mm}$ $\hspace{5mm}$ $\hspace{5mm}$ 1 = $\dfrac{(1+\sqrt{5})^2 - (1-\sqrt{5})^2}{\sqrt{5}.2}$ \\ 
+	
+	$\hspace{5mm}$ Assume that $$F_i = \frac{\phi^i - \hat{\phi^i}}{\sqrt{5}}$$
+	
+	$\hspace{5mm}$ holds true for n-1 and n. We need to show that 
+	
+	$$F_{n+1} = \frac{\phi^{n+1} - \hat{\phi^{n+1}}}{\sqrt{5}}$$
+	
+	$\hspace{5mm}$ We know from Fibonacci series,
+	
+	$$F_{n+1} = F_{n} + F_{n-1}$$
+	
+	$$F_{n+1} = \frac{\phi^{n} - \hat{\phi^{n}}}{\sqrt{5}} + \frac{\phi^{n-1} - \hat{\phi^{n-1}}}{\sqrt{5}}$$
+	
+	$$F_{n+1} = \frac{\phi^{n} - \hat{\phi^{n}} + \phi^{n-1} - \hat{\phi^{n-1}}}{\sqrt{5}}$$
+	
+	$$F_{n+1} = \frac{\phi^{n} + \phi^{n-1} - \hat{\phi^{n}} - \hat{\phi^{n-1}}}{\sqrt{5}}$$
+	
+	$\hspace{5mm}$ Since $\phi$.$\hat{\phi}$ = -1 \\
+	
+	$$F_{n+1} = \frac{(\hat{\phi^{2}} - \hat{\phi^{1}})\phi^{n+1} + ({\phi^{2}} - {\phi^{1}})\hat{\phi^{n+1}}}{\sqrt{5}}$$
+	
+	$\hspace{5mm}$ Since $(\hat{\phi^{2}} - \hat{\phi^{1}})$ = $({\phi^{2}} - {\phi^{1}})$ = 1 $\hspace{45mm}$  \{ from Question 4 \} \\
+	
+	$$F_{n+1} = \frac{\phi^{n+1} - \hat{\phi^{n+1}}}{\sqrt{5}}$$
+	
+	$\hspace{5mm}$ Hence proved by induction.
+	
+\end{solutionorbox}
+
+\ifprintanswers
+\newpage
+\else
+\bigskip
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Question 6
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question[5]
+Consider the following algorithm:
+\begin{codebox}
+	\Procname{$\proc{Print-I-J}(n)$}
+	\li \For $(i=2; i<n; i++)$ \Do
+	\li 	\For $(j=0; j\le n)$ \Do
+	\li 		\proc{Print} $i$, $j$
+	\li 		$j = j + \floor{n/4}$
+	\End
+	\End
+	\End
+\end{codebox}
+
+\begin{enumerate}[label=(\roman*)]
+	\item What does this algorithm do?
+	\item What is the output when $n=4$, $n=16$, $n=32$?
+	\item What is the time complexity $T(n)$.  You may assume that $n$ is divisible by 4.
+\end{enumerate}
+
+\begin{solutionorbox}
+	
+	\begin{enumerate}[label=(\roman*)]
+		\item The algorithm prints out pairs of \{i,j\} where i takes values from \{2 to n\} and j takes values in a geometric progression with the first value as 0, the ratio of $\dfrac{n}{4}$ and the last value as n.
+		\item \begin{minipage}[b]{0.30\textwidth}
+			\raggedright
+			For  n = 4,\\
+			loop i = 2\\
+			i - 2, j - 0\\
+			i - 2, j - 1\\
+			i - 2, j - 2\\
+			i - 2, j - 3\\
+			i - 2, j - 4\\
+			loop i = 3\\
+			i - 3, j - 0\\
+			....... \\
+			i - 3, j - 4\\
+			loop i = 4\\
+			i - 4, j - 0\\
+			i - 4, j - 1\\
+			i - 4, j - 2\\
+			i - 4, j - 3\\
+			i - 4, j - 4\\ 
+			
+		\end{minipage}%
+		\begin{minipage}[b]{0.30\textwidth}
+			\centering
+			For  n = 16,\\
+			loop i = 2\\
+			i - 2, j - 0\\
+			i - 2, j - 4\\
+			i - 2, j - 8\\
+			i - 2, j - 12\\
+			i - 2, j - 16\\
+			loop i = 3\\
+			i - 3, j - 0\\
+			....... \\
+			i - 15, j - 16\\
+			loop i = 16\\
+			i - 16, j - 0\\
+			i - 16, j - 4\\
+			i - 16, j - 8\\
+			i - 16, j - 12\\
+			i - 16, j - 16\\
+		\end{minipage}%
+		\begin{minipage}[b]{0.30\textwidth}
+			\raggedleft
+			For  n = 32,\\
+			loop i = 2\\
+			i - 2, j - 0\\
+			i - 2, j - 8\\
+			i - 2, j - 16\\
+			i - 2, j - 24\\
+			i - 2, j - 32\\
+			loop i = 3\\
+			i - 3, j - 0\\
+			....... \\
+			i - 31, j - 32\\
+			loop i = 32\\
+			i - 32, j - 0\\
+			i - 32, j - 8\\
+			i - 32, j - 16\\
+			i - 32, j - 24\\
+			i - 32, j - 32\\
+		\end{minipage}
+					
+					Attached python file to check the outputs.
+		
+		
+		\item  Algorithm:\\
+		
+		\begin{lstlisting}
+n = 32				c1		 1
+for i in range(2, n+1):		c2		 n
+  j = 0				c3	 	 n-1
+  while (j < n + 1):		c4		(n-1)*6
+    print(i, j)			c5 		(n-1)*5	
+    j = j + math.floor(n/4)	c6		(n-1)*5
+		\end{lstlisting}
+		
+		T(n) = c1*1 + c2*n + c3*n-1 + c4*(n-1)*6 + c5*(n-1)*5 + c6*(n-1)*5
+		T(n) = $\theta(n)$
+	
+	\end{enumerate}
+	
+\end{solutionorbox}
+
+\ifprintanswers
+\newpage
+\else
+\bigskip
+\fi
+
+\end{questions}
+\end{document}

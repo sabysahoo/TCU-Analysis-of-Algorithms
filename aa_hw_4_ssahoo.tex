@@ -1,0 +1,511 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Analysis of Algorithms
+%
+% Homework Assignment #4
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Score Card and Answer Sheets
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints,11pt]{exam}
+\usepackage{clrscode4e}
+\usepackage{tcucosc}
+\usepackage{units}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{pythonhighlight}
+\usepackage{colortbl}
+\makeatletter
+\newcolumntype{W}{!{\smash{\vrule
+			\@width 4\arrayrulewidth
+			\@height\dimexpr\ht\@arstrutbox+2pt\relax
+			\@depth\dimexpr\dp\@arstrutbox+2pt\relax}}}
+\makeatother
+\definecolor{lightred}{rgb}{.99,.4,.2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin Document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\pagestyle{empty}
+	
+	
+	\noindent{\large\bfseries Name: Sabyasachi Sahoo }\\
+	\noindent{\large\bfseries COSC 40403 - Analysis of Algorithms: Fall 2018: Homework 4}\\
+	\noindent{\large\bfseries Due: 23:59:59 on September 25, 2018}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% Score Card and Answer Sheets
+	%
+	% Comment out one-or-the-other to show or not-show the answers.
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\printanswers
+	%\noprintanswers
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% Score Card
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\ifprintanswers
+	\noindent
+	\begin{center}
+		\gradetable[v][questions]
+	\end{center}
+	\newpage
+	\fi
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% Question 1
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{questions}
+		\question[5]
+		Exercise 7.1-1: Using Figure 7.1 as a model, illustrate the operation \proc{Partition} on the array $A = \left< 13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11\right>$
+		\begin{solutionorbox}
+			\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				13&
+				19&
+				9&
+				5&
+				12&
+				8&
+				7&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}13&
+				19&
+				9&
+				5&
+				12&
+				8&
+				7&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				9&
+				5&
+				12&
+				8&
+				7&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				5&
+				12&
+				8&
+				7&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				12&
+				8&
+				7&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				8&
+				7&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}8&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				7&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}8&
+				\cellcolor{lightred}7&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				4&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}8&
+				\cellcolor{lightred}7&
+				\cellcolor{lightred}4&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}8&
+				\cellcolor{lightred}7&
+				\cellcolor{lightred}4&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				\cellcolor{lightred}21&
+				2&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}8&
+				\cellcolor{lightred}7&
+				\cellcolor{lightred}4&
+				\cellcolor{lightred}2&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				\cellcolor{lightred}21&
+				6&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}8&
+				\cellcolor{lightred}7&
+				\cellcolor{lightred}4&
+				\cellcolor{lightred}2&
+				\cellcolor{lightred}6&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				\cellcolor{lightred}21&
+				11
+			\end{tabular}\\
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{}&
+				\multicolumn{1}{c}{$r$}\\
+				\cellcolor{lightred}9&
+				\cellcolor{lightred}5&
+				\cellcolor{lightred}8&
+				\cellcolor{lightred}7&
+				\cellcolor{lightred}4&
+				\cellcolor{lightred}2&
+				\cellcolor{lightred}6&
+				11&
+				\cellcolor{lightred}13&
+				\cellcolor{lightred}19&
+				\cellcolor{lightred}12&
+				\cellcolor{lightred}21
+			\end{tabular}\\
+		\end{solutionorbox}
+		
+		\ifprintanswers
+		\newpage
+		\else
+		\bigskip
+		\fi
+		
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% Question 2
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\question[5]
+		Exercise 7.1-2: What value of $q$ does \proc{Partition} return when all elements in the array $A[p..r]$ have the same value?  Modify \proc{Partition} so that $q= \floor{(p+r)/2}$ when all elements in the array $A[p..r]$ have the same value.
+		
+		\begin{solutionorbox}\\
+			1.) When all the elements are same in an array, the value of q returned is r.\\
+			
+			2.) \\
+			PARTITION(A, p, r) \\
+			x = A[r]\\
+			k = p – 1\\
+			l = p – 1\\
+			for j = p to r - 1
+			
+			$\hspace{10pt}$	 if A[j] < x
+			
+			$\hspace{10pt}$$\hspace{10pt}$		k = k + 1
+			
+			$\hspace{10pt}$$\hspace{10pt}$	exchange A[j] with A[k]
+			
+			$\hspace{10pt}$$\hspace{10pt}$		l = l + 1
+			
+			$\hspace{10pt}$  	else
+			
+			$\hspace{10pt}$$\hspace{10pt}$		if A[j] = x
+			
+			$\hspace{10pt}$$\hspace{10pt}$$\hspace{10pt}$ l = l + 1
+			
+			$\hspace{10pt}$$\hspace{10pt}$$\hspace{10pt}$ exchange A[j] with A[l]
+			
+			exchange A[l + 1] with A[r]\\
+			return (A, floor((l+k)݇/2) +1 )\\
+			
+		\end{solutionorbox}
+		
+		\ifprintanswers
+		\newpage
+		\else
+		\bigskip
+		\fi
+		
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% Question 3
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%\question[5]
+		%Exercise 7.2-1: Use the substitution method to prove that the recurrence relation $T(n) = T(n-1) + \Theta(n)$ has the solution $T(n) = \Theta(n^2)$, as claimed at the beginning of Section 7.2.
+		
+		%\begin{solutionorbox}
+		%Place your solution here.
+		%\end{solutionorbox}
+		
+		%\ifprintanswers
+		%\newpage
+		%\else
+		%\bigskip
+		%\fi
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% Question 4
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\question[30]
+		Using a Jupyter notebook (Python 3 programming language), create an array of 1000 random integers with each integer in the range $[10000..99999]$ (inclusive).  You can use this array to make deep-copies for each of the sorting methods.  Implement the \proc{Randomized-Quicksort}{()}, \proc{Counting-Sort}{()}, and \proc{Radix-Sort}{()} as presented in our textbook.  Time each algorithm and rank them by their sorting times (lowest to highest) on sorting the same (one) instance of the array of 1000 random integers.
+		
+		\begin{solutionorbox}
+			Submit solution in Jupyter notebook.
+		\end{solutionorbox}
+		
+		\ifprintanswers
+		\newpage
+		\else
+		\bigskip
+		\fi
+		
+		
+		
+	\end{questions}
+\end{document}
